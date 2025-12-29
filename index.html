@@ -6,20 +6,20 @@
 
   <style>
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
-      text-align: center;
-      margin-top: 80px;
-      background-color: #eef5ff;
+      background: #eef5ff;
       overflow: hidden;
+      text-align: center;
     }
 
     h1 {
-      font-size: 48px;
-      margin-bottom: 30px;
+      margin-top: 40px;
+      font-size: 36px;
     }
 
     #countdown {
-      font-size: 50px;
+      font-size: 48px;
       font-weight: bold;
       margin-bottom: 40px;
     }
@@ -29,38 +29,38 @@
       position: absolute;
       top: 0;
       right: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-    }
-
-    .slope {
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 140%;
-      height: 6px;
-      background: #444;
+      width: 120%;
+      height: 120%;
+      background: #dfe9f3;
+      transform: rotate(-20deg);
       transform-origin: top right;
-      transform: rotate(35deg);
     }
 
-    /* SKIËR */
+    /* SKIER */
     .skier {
       position: absolute;
-      top: 0;
-      right: 0;
+      top: 120px;
+      right: 120px;
       font-size: 40px;
-      transform-origin: center;
-      animation: ski 8s linear infinite;
+      animation: ski 6s linear infinite;
     }
 
+    /* ANIMATIE: exact langs de rand */
     @keyframes ski {
       0% {
-        transform: translate(0, 0) rotate(35deg);
+        transform: translate(0, 0);
+        opacity: 1;
+      }
+      70% {
+        transform: translate(-700px, 400px);
+        opacity: 1;
+      }
+      75% {
+        opacity: 0;
       }
       100% {
-        transform: translate(-140vw, 100vh) rotate(35deg);
+        transform: translate(0, 0);
+        opacity: 0;
       }
     }
   </style>
@@ -71,11 +71,11 @@
   <h1>Aftellen naar ski reis 🎿</h1>
   <div id="countdown"></div>
 
-  <!-- BERG + SKIËR -->
-  <div class="mountain">
-    <div class="slope"></div>
-    <div class="skier">⛷️</div>
-  </div>
+  <!-- BERG -->
+  <div class="mountain"></div>
+
+  <!-- SKIER OP DE RAND -->
+  <div class="skier">🎿</div>
 
   <script>
     const targetDate = new Date("2026-02-01 00:00:00").getTime();
