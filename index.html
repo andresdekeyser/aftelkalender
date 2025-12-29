@@ -9,63 +9,58 @@
       font-family: Arial, sans-serif;
       text-align: center;
       margin-top: 80px;
-      background: linear-gradient(#87ceeb, #ffffff);
+      background-color: #eef5ff;
       overflow: hidden;
     }
 
     h1 {
       font-size: 48px;
-      margin-bottom: 40px;
+      margin-bottom: 30px;
     }
 
     #countdown {
       font-size: 50px;
       font-weight: bold;
-      margin-bottom: 60px;
+      margin-bottom: 40px;
     }
 
     /* BERG */
     .mountain {
       position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 40%;
-      background: linear-gradient(to top right, #ccc, #eee);
-      clip-path: polygon(0% 100%, 40% 20%, 70% 60%, 100% 30%, 100% 100%);
+      top: 0;
+      right: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+    }
+
+    .slope {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 140%;
+      height: 6px;
+      background: #444;
+      transform-origin: top right;
+      transform: rotate(35deg);
     }
 
     /* SKIËR */
     .skier {
       position: absolute;
-      top: -50px;
-      right: -50px;
+      top: 0;
+      right: 0;
       font-size: 40px;
-      animation: ski 6s linear infinite;
+      transform-origin: center;
+      animation: ski 8s linear infinite;
     }
 
-    /* ANIMATIE: rechtsboven → linksonder → terug */
     @keyframes ski {
       0% {
-        top: -50px;
-        right: -50px;
-        transform: rotate(20deg);
-        opacity: 1;
-      }
-      70% {
-        top: 70%;
-        right: 90%;
-        transform: rotate(-20deg);
-        opacity: 1;
-      }
-      71% {
-        opacity: 0;
+        transform: translate(0, 0) rotate(35deg);
       }
       100% {
-        top: -50px;
-        right: -50px;
-        transform: rotate(20deg);
-        opacity: 0;
+        transform: translate(-140vw, 100vh) rotate(35deg);
       }
     }
   </style>
@@ -73,15 +68,14 @@
 
 <body>
 
-  <h1>Aftellen naar ski reis 🎉</h1>
-
+  <h1>Aftellen naar ski reis 🎿</h1>
   <div id="countdown"></div>
 
-  <!-- SKIËR -->
-  <div class="skier">⛷️</div>
-
-  <!-- BERG -->
-  <div class="mountain"></div>
+  <!-- BERG + SKIËR -->
+  <div class="mountain">
+    <div class="slope"></div>
+    <div class="skier">⛷️</div>
+  </div>
 
   <script>
     const targetDate = new Date("2026-02-01 00:00:00").getTime();
@@ -102,4 +96,3 @@
 
 </body>
 </html>
-
