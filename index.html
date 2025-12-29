@@ -8,14 +8,14 @@
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      margin-top: 50px;
-      background: linear-gradient(#cce7ff, #ffffff);
+      margin-top: 80px;
+      background: linear-gradient(#87ceeb, #ffffff);
       overflow: hidden;
     }
 
     h1 {
       font-size: 48px;
-      margin-bottom: 30px;
+      margin-bottom: 40px;
     }
 
     #countdown {
@@ -26,37 +26,46 @@
 
     /* BERG */
     .mountain {
-      position: relative;
+      position: absolute;
+      bottom: 0;
+      left: 0;
       width: 100%;
-      height: 300px;
-      background: linear-gradient(to top right, #ffffff 50%, #dddddd 50%);
-      overflow: hidden;
+      height: 40%;
+      background: linear-gradient(to top right, #ccc, #eee);
+      clip-path: polygon(0% 100%, 40% 20%, 70% 60%, 100% 30%, 100% 100%);
     }
 
-    /* SKIER */
+    /* SKIËR */
     .skier {
       position: absolute;
-      top: 20px;
-      left: -50px;
+      top: -50px;
+      right: -50px;
       font-size: 40px;
-      animation: ski 8s linear infinite;
+      animation: ski 6s linear infinite;
     }
 
+    /* ANIMATIE: rechtsboven → linksonder → terug */
     @keyframes ski {
       0% {
-        top: 20px;
-        left: -50px;
-        transform: rotate(0deg);
-      }
-      60% {
-        top: 220px;
-        left: 100%;
+        top: -50px;
+        right: -50px;
         transform: rotate(20deg);
+        opacity: 1;
+      }
+      70% {
+        top: 70%;
+        right: 90%;
+        transform: rotate(-20deg);
+        opacity: 1;
+      }
+      71% {
+        opacity: 0;
       }
       100% {
-        top: 20px;
-        left: -50px;
-        transform: rotate(0deg);
+        top: -50px;
+        right: -50px;
+        transform: rotate(20deg);
+        opacity: 0;
       }
     }
   </style>
@@ -64,14 +73,15 @@
 
 <body>
 
-  <h1>Aftellen naar ski reis 🎿</h1>
+  <h1>Aftellen naar ski reis 🎉</h1>
 
   <div id="countdown"></div>
 
-  <!-- BERG + SKIER -->
-  <div class="mountain">
-    <div class="skier">⛷️</div>
-  </div>
+  <!-- SKIËR -->
+  <div class="skier">⛷️</div>
+
+  <!-- BERG -->
+  <div class="mountain"></div>
 
   <script>
     const targetDate = new Date("2026-02-01 00:00:00").getTime();
@@ -92,3 +102,4 @@
 
 </body>
 </html>
+
